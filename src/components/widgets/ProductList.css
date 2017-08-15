@@ -1,6 +1,35 @@
+.productListImage {
+  width: 180px
+}
+
+.antcard {
+  background: #fff;
+  border-radius: 2px;
+  font-size: 12px;
+  position: relative;
+  transition: all .3s;
+  height: 380px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+
+.pagnation{
+  float: right;
+  margin-right:10%;
+  width:550px;
+}
+
+.sortby{
+  float: left;
+  margin-left: 8%;
+}
 
 .normal {
+
 }
+
+
 .custom-image img {
     display: block;
   }
@@ -11,7 +40,7 @@
     color: #999;
   }
 
-  .example-spin {
+  .exampleSpin {
     text-align: center;
     background: rgba(0,0,0,0.05);
     border-radius: 4px;

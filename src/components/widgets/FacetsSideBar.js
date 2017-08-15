@@ -5,7 +5,13 @@ const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 import { Spin, Alert } from 'antd';
 import { connect } from 'dva';
+import { routerRedux } from 'dva/router';
+import { Checkbox } from 'antd';
 
+function selectFacet(dispatch,url){
+  dispatch(routerRedux.push('/category/'+url));
+  
+}
 
 function FacetsSideBar({ dispatch, productList, loading }) {
   return (
@@ -26,7 +32,7 @@ function FacetsSideBar({ dispatch, productList, loading }) {
                 return <SubMenu key={facetGroup.facetName} title={facetGroup.facetName}>
                   {
                     facetGroup.facetValues.map((facet, index) => {
-                      return <Menu.Item key={facet.restURL}>{facet.label} -{facet.selected} - {facet.count}</Menu.Item>
+                      return <Menu.Item key={facet.restURL}><Checkbox onChange={()=>{selectFacet(dispatch,facet.restURL)}} checked={facet.selected}>{facet.label} -{facet.selected} ({facet.count})</Checkbox></Menu.Item>
                     })
                   }
                 </SubMenu>

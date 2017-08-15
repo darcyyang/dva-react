@@ -1,32 +1,38 @@
 import React from 'react';
 import styles from './ProductDetail.css';
 import { connect } from 'dva';
-import { Spin } from 'antd';
+import { Spin ,Button} from 'antd';
 import { Card, Col, Row } from 'antd';
 import { Carousel } from 'antd';
+import ReactImageFallback from "react-image-fallback";
 
 
-const showDefault = (e)=>{
-  console.log(e);
-  console.log(e);
-  
-}
 
 function ProductDetail({productDetail, loading}) {
   return (
     <div className={styles.normal}>
       {
         loading ? <Spin /> :
-        <div id="product-details">
+        <div className={styles.productDetails}>
           {
-            !productDetail.success?null:
+            !productDetail.success?
+            <div><h1>Error on product detail request</h1></div>
+            :
             <Row gutter={24}>
               <Col span={6} >
                   <Carousel>
-                    <div><img src={productDetail.result.productInfo.productLargeUrl} onError={showDefault(this)}/></div>
-                    <div><img src={productDetail.result.productInfo.productLargeUrl} onError={showDefault(this)}/></div>
-                    <div><h3>3</h3></div>
-                    <div><h3>4</h3></div>
+                    <div> <ReactImageFallback
+                          src={productDetail.result.productInfo.productLargeUrl}
+                          fallbackImage="/static/yay.44dd3333.jpg"
+                          initialImage="/static/yay.44dd3333.jpg"
+                          alt="cool image should be here"
+                          className={styles.productImage} /></div>
+                    <div><ReactImageFallback
+                          src={productDetail.result.productInfo.productLargeUrl}
+                          fallbackImage="/static/yay.44dd3333.jpg"
+                          initialImage="/static/yay.44dd3333.jpg"
+                          alt="cool image should be here"
+                          className={styles.productImage} /></div>
                   </Carousel>
                   {/* <div className="additional-images">
                       <a href="{#images.imageSet.largeImage.srcValue}" rel="lightbox[slides]" title="{#product.productName}">
@@ -37,12 +43,12 @@ function ProductDetail({productDetail, loading}) {
               <Col span={18}>
               <h1>{productDetail.result.productInfo.brandName} - {productDetail.result.productInfo.productName} </h1>
               <p>{productDetail.result.productInfo.productDescription}</p>
-              <div id="product-price">
+              <div className={styles.productPrice}>
                           <p>Our Price :  $ {productDetail.result.productInfo.skuInfo.ourPrice}</p>
                           <p>List Price : $ {productDetail.result.productInfo.skuInfo.listPrice}</p>
                           <p>Saving Desct : {productDetail.result.productInfo.skuInfo.savingsDesc}</p>
               </div>
-              <input type="submit" name="submit" value="Add to Cart" />
+              <p><Button type="primary">ADD TO CART</Button></p>
               <b>SKU: #{productDetail.result.productInfo.skuInfo.skuId}</b>
               </Col>
             </Row>

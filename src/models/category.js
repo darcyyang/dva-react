@@ -1,12 +1,12 @@
 import request from '../utils/request'
 
 function getTopNavigation(payload) {
-  return request('/api/categories');
+  // return request('/api/categories');
+  return request('http://devd.alliancetime.com/rest/categories');
+  
 }
 
-// function getProductList(payload) {
-//   return request('/api/categories/'+ payload.split('/category/')[1]);
-// }
+
 
 
 export default {
@@ -20,18 +20,12 @@ export default {
       return payload
     },
 
-
   },
   effects: {
     *fetchTopNavigation({ payload }, { call, put }) {
       const { data } = yield call(getTopNavigation, payload);
       yield put({ type: 'get', payload: data });
     }
-
-    // *fetchProductList({ payload }, { call, put }) {
-    //   const { data } = yield call(getTopNavigation, payload);
-    //   yield put({ type: 'get', payload: data });
-    // },
 
   },
   subscriptions: {

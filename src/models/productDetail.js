@@ -1,7 +1,7 @@
 import request from '../utils/request'
 
 function getProductDetail(payload) {
-  return request('/api/products/123');
+  return request('http://devd.alliancetime.com/rest'+payload);
 }
 export default {
   namespace: 'productDetail',

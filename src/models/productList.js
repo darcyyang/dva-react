@@ -2,7 +2,7 @@ import request from '../utils/request'
 
 
 function getProductList(payload) {
-  return request('/api/categories/'+ payload.split('/category/')[1]);
+  return request('http://devd.alliancetime.com/rest/categories/'+ payload.split('/category/')[1]);
 }
 
 
