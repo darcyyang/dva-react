@@ -1,8 +1,9 @@
 import request from '../utils/request'
+import pathToRegexp from 'path-to-regexp';
 
 
-function getProductList(payload) {
-  return request('http://devd.alliancetime.com/rest/categories/'+ payload.split('/category/')[1]);
+function getProductList({pathname,query}) {
+  return request('http://devd.alliancetime.com/rest/categories/'+ pathname);
 }
 
 
@@ -27,8 +28,9 @@ export default {
     setup({ dispatch, history }) {
       // Once visit page, subscribe the fetch with top category data.
       return history.listen(({ pathname, query }) => {
-        if (pathname.indexOf('/category/') === 0)
-          dispatch({ type: 'fetchProductList', payload: pathname });
+        const match = pathToRegexp('/category/:id').exec(pathname);        
+        if (match)
+          dispatch({ type: 'fetchProductList', payload: {pathname: match[1],query: query} });
       });
     },
   },

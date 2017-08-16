@@ -56,7 +56,10 @@ function ProductList({ dispatch, productList, loading }) {
         </div>
         :
         <div>
-          <Row>
+        {
+          productList.products === undefined? 'Loading Error' :
+            <div>
+            <Row>
             <Col className={styles.sortby}>
               <Dropdown.Button overlay={sortOptions(productList)} style={{ marginLeft: '8.33333333%' }}>
                 Sort Options
@@ -106,6 +109,9 @@ function ProductList({ dispatch, productList, loading }) {
               showTotal={(total, range) => `${range[0]}-${range[1]} of ${total} items`}
               style={{ marginLeft: '8.33333333%' }} />
           </Row>
+          </div>
+        }
+       
         </div>
       }
     </div>
