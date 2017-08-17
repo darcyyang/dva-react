@@ -2,18 +2,34 @@ import React from 'react';
 import { connect } from 'dva';
 import styles from './IndexPage.css';
 import Template from '../components/layout/TemplateBody'
+import { Carousel } from 'antd';
+import ReactImageFallback from "react-image-fallback";
+
+
 function IndexPage({ location }) {
   return (
    <Template location={location}> 
     <div className={styles.normal}>
-      <h1 className={styles.title}>Yay! Welcome to dva!</h1>
-      <div className={styles.welcome} />
-      <ul className={styles.list}>
-        <li>To get started, edit <code>src/index.js</code> and save to reload.</li>
-        <li><a href="https://github.com/dvajs/dva-docs/blob/master/v1/en-us/getting-started.md">Getting Started</a></li>
-      </ul>
+        <Carousel className={styles.imageSlide}>
+             <div>
+              <ReactImageFallback
+                src='http://www.ashford.com/images/promos/2013/February/desktop-shorthero-primary-08-14-HE-EN.jpg'
+                fallbackImage={require('../assets/yay.jpg')}
+                initialImage={require('../assets/loading.gif')}
+                alt="Product Image1"
+                />
+              </div>
+              <div>
+                <ReactImageFallback
+                src='http://www.ashford.com/images/promos/2013/February/desktop-shorthero-primary-08-14-HE-EN.jpg'
+                fallbackImage={require('../assets/yay.jpg')}
+                initialImage={require('../assets/loading.gif')}
+                alt="Product Image2"
+                />
+              </div>
+      </Carousel>
     </div>
-    </Template>
+  </Template>
   );
 }
 

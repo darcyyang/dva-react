@@ -1,3 +1,6 @@
 
 .normal {
+    background: none repeat scroll 0 0 #000;
+    width: 100%;
+    float: left;
 }

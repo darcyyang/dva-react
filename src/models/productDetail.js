@@ -1,12 +1,19 @@
 import request from '../utils/request'
+import pathToRegexp from 'path-to-regexp';
 
-function getProductDetail(payload) {
-  return request('http://devd.alliancetime.com/rest'+payload);
+function getProductDetail({id, query}) {
+  return request('http://devd.alliancetime.com/rest/products/'+id);
 }
+
+function getPrice({id, query}){
+  return request('http://devd.alliancetime.com/rest/price/'+id);
+}
+
 export default {
   namespace: 'productDetail',
   state: {
-    productDetail: {}
+    productDetail: {},
+    price:{}
   },
   reducers: {
     get(state, { payload }) {
@@ -15,15 +22,19 @@ export default {
   },
   effects: {
     *fetchProductDetail({ payload }, { call, put }) {
-      const {data}  = yield call(getProductDetail, payload);
-      yield put({ type: 'get', payload: data });
+      const product  = yield call(getProductDetail, payload);
+      const price  = yield call(getPrice, payload);
+      
+      yield put({ type: 'get', payload: {productDetail:product.data,price: price.data} });
     }
   },
+
   subscriptions: {
     setup({ dispatch, history }) {
       return history.listen(({ pathname, query }) => {
-        if (pathname.indexOf('/products/') === 0)
-           dispatch({ type: 'fetchProductDetail', payload: pathname });
+        const match = pathToRegexp('/products/:id').exec(pathname);        
+        if (match)
+           dispatch({ type: 'fetchProductDetail', payload: {id: match[1],query: query} });
       });
     },
   },

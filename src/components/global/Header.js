@@ -50,10 +50,13 @@ function Header({ dispatch, category, location, loading }) {
           mode="horizontal"
           theme="dark"
         >
+        <Menu.Item key="/logo">
+              <img data-feo-orig-src="/images/ashford/footer-logo.png" src="http://2.shrd.zh.ashford.com.edgekey.net/q/n/EoxwZLesA.webp" width="121" height="41" alt="页脚徽标" />
+        </Menu.Item>
           {renderCategoryitem(category.navigation)}
 
           <Menu.Item key="/antd">
-            <a href="https://ant.design/docs/react/introduce" target="_blank">ANtd Doc</a>
+            <a href="https://ant.design/docs/react/introduce" target="_blank" className={styles.highlightText}>ANtd Doc</a>
           </Menu.Item>
           <Menu.Item key="login" style={{ 'float': 'right' }}>
             <Link to={'/login/'} activeClassName="active">login</Link>

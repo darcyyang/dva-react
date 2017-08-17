@@ -2,3 +2,7 @@
 .normal {
     height: 45px
 }
+
+.highlightText{
+    color: rgb(6, 166, 233)!important;
+}

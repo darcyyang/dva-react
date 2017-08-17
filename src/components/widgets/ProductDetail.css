@@ -11,12 +11,42 @@
 }
 .productPrice {
     font-weight: bold;
-    font-size: 14px;
-    color: #ed0a0a;
     font-family: cabinmedium;
-    text-transform: uppercase;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    height: 19px
+    font-size: 16px;
+    padding-top: 5px;
+    text-transform: uppercase;
+    color: #ed0a0a;
+    
 }
+
+.productNormalPrice {
+    font-size: 12px;
+    color: '#6b6b6b';
+    text-transform: uppercase;
+}
+
+
+
+
+:global 
+    .ant-carousel .slick-dots li button {
+        border: 0;
+        cursor: pointer;
+        background: #868686;;
+        display: block;
+        width: 16px;
+        height: 3px;
+        border-radius: 1px;
+        outline: none;
+        font-size: 0;
+        color: transparent;
+        transition: all .5s;
+        margin-top :16px;
+    }
+:global    .ant-carousel .slick-dots li.slick-active button {
+        background: #f3ad0a;
+        opacity: 1;
+        width: 24px;}

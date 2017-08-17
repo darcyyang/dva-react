@@ -12,7 +12,7 @@ function TemplateBody({ children, location }) {
       <Layout style={{ padding: '0 24px 24px' }}>
         {children}
       </Layout>
-      <Footer><ASHFooter/></Footer>
+      <Footer style={{padding : 0}}><ASHFooter/></Footer>
     </Layout>
   );
 }

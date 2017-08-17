@@ -88,8 +88,8 @@ function ProductList({ dispatch, productList, loading }) {
                       <div>
                         <ReactImageFallback
                           src={productItem.images[0]}
-                          fallbackImage="/static/yay.44dd3333.jpg"
-                          initialImage="/static/yay.44dd3333.jpg"
+                          fallbackImage={require('../../assets/yay.jpg')}
+                          initialImage={require('../../assets/loading.gif')}
                           alt="cool image should be here"
                           className={styles.productListImage} />
                       </div>
