@@ -1,6 +1,11 @@
 .productListImage {
   width: 180px
 }
+.topPagination{
+  marginLeft: '8.33333333%' ;
+  float: right;
+  margin-right: 15%;
+}
 
 .antcard {
   background: #fff;
@@ -11,6 +16,13 @@
   height: 380px;
   margin-top: 8px;
   margin-bottom: 8px;
+}
+
+.viewDetail {
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 1%;
+
 }
 
 

@@ -2,8 +2,6 @@ import dva from 'dva';
 import './index.css';
 import createLoading from 'dva-loading'
 import { browserHistory } from 'dva/router';
-import { useRouterHistory } from 'dva/router';
-import { createHashHistory } from 'history';
 // 1. Initialize
 const app = dva({
   history: browserHistory,

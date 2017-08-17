@@ -43,7 +43,7 @@ function renderCategoryitem(category) {
 function Header({ dispatch, category, location, loading }) {
 
   return (
-    < div >
+    < div className={styles.normal}>
       {loading ? <Spin /> :
         <Menu
           selectedKeys={[location.pathname]}

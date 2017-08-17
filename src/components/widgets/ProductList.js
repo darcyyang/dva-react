@@ -7,6 +7,7 @@ import { Spin } from 'antd';
 import ReactImageFallback from "react-image-fallback";
 import styles from './ProductList.css';
 import { routerRedux } from 'dva/router';
+import { addQuery, removeQuery } from '../../utils/queryRouter';
 
 
 function viewProductDetail(dispatch, url) {
@@ -45,8 +46,8 @@ const sortOptions = (productList) => {
 
 
 
-
 function ProductList({ dispatch, productList, loading }) {
+  
   return (
 
     <div className={styles.normal}>
@@ -66,11 +67,14 @@ function ProductList({ dispatch, productList, loading }) {
           </Dropdown.Button>
             </Col>
             <Col className={styles.pagnation}>
-              <Pagination pageSize={productList.products.pageSize}
+              <Pagination 
+                className={styles.topPagination}
+                pageSize={productList.products.pageSize}
                 current={productList.products.currentPage}
                 total={productList.products.productCount}
                 showTotal={(total, range) => `${range[0]}-${range[1]} of ${total} items`}
-                style={{ marginLeft: '8.33333333%' }} />
+                style={{ marginLeft: '8.33333333%' }} 
+                onChange={(page, pageSize)=>{addQuery({ currentPage: page })}}/>
             </Col>
           </Row>
           {
@@ -95,7 +99,7 @@ function ProductList({ dispatch, productList, loading }) {
                         <p className="product-price">Retail Price: $ {productItem.priceRetail}</p>
                         <p className="product-price">Sales Price : $ {productItem.priceCurrent}</p>
                         <p className="product-price">Saving for : $ {productItem.discount}</p>
-                        <Button onClick={() => viewProductDetail(dispatch, productItem.restURL)}>View Detail</Button>
+                        <Button className={styles.viewDetail} onClick={() => viewProductDetail(dispatch, productItem.restURL)}>View Detail</Button>
                       </div>
                     </Card>
                   </Col>
@@ -107,7 +111,9 @@ function ProductList({ dispatch, productList, loading }) {
               current={productList.products.currentPage}
               total={productList.products.productCount}
               showTotal={(total, range) => `${range[0]}-${range[1]} of ${total} items`}
-              style={{ marginLeft: '8.33333333%' }} />
+              style={{ marginLeft: '8.33333333%' }} 
+              onChange={(page, pageSize)=>{addQuery({ currentPage: page })}}
+              />
           </Row>
           </div>
         }

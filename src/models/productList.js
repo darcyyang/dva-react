@@ -3,7 +3,7 @@ import pathToRegexp from 'path-to-regexp';
 
 
 function getProductList({pathname,query}) {
-  return request('http://devd.alliancetime.com/rest/categories/'+ pathname);
+  return request('http://devd.alliancetime.com/rest/categories/'+ pathname,query);
 }
 
 

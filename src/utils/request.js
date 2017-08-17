@@ -1,5 +1,8 @@
 import fetch from 'dva/fetch';
 
+const queryString = require('query-string');
+
+
 function parseJSON(response) {
   return response.json();
 }
@@ -21,8 +24,14 @@ function checkStatus(response) {
  * @param  {object} [options] The options we want to pass to "fetch"
  * @return {object}           An object containing either "data" or "err"
  */
-export default function request(url, options) {
-  return fetch(url, options)
+export default function request(path, params = {}, options) {
+  const parmsStr = queryString.stringify(params)
+  // if (parmsStr !== '') {
+  //   path = path + '?' + parmsStr
+  // }
+  parmsStr !== ''? path = path + '?' + parmsStr : null
+
+  return fetch(path, options)
     .then(checkStatus)
     .then(parseJSON)
     .then(data => ({ data }))

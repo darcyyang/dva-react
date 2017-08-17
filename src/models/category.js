@@ -26,7 +26,6 @@ export default {
       const { data } = yield call(getTopNavigation, payload);
       yield put({ type: 'get', payload: data });
     }
-
   },
   subscriptions: {
     setup({ dispatch, history }) {

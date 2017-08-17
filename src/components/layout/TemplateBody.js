@@ -8,7 +8,7 @@ const { Header, Footer, Sider, Content } = Layout;
 function TemplateBody({ children, location }) {
   return (
     <Layout>
-      <Header><ASHHeader location={location}/></Header>
+      <Header style={{height: 45}}><ASHHeader location={location}/></Header>
       <Layout style={{ padding: '0 24px 24px' }}>
         {children}
       </Layout>
