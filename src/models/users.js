@@ -4,13 +4,10 @@ const queryString = require('query-string');
 
 function login(params) {
   const postParams = queryString.stringify(params);
-
   return post('/api/users/login', params);
 }
 
 function logout(params) {
-  // const postParams = queryString.stringify(params);
-
   return post('/api/users/logout');
 }
 
@@ -33,6 +30,7 @@ export default {
     *logout({ payload }, { call, put }) {
       const { data } = yield call(logout, payload);
       yield put({ type: 'get', payload: data });
+      window.location.href = '/';
     }
   },
 subscriptions: {
