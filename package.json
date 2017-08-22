@@ -21,7 +21,8 @@
     "path-to-regexp":"^1.7.0",
     "react-image-fallback": "^7.0.1",
     "superagent": "^1.8.3",
-    "query-string": "^5.0.0"
+    "query-string": "^5.0.0",
+    "react-cookie": "^2.0.8"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",

@@ -13,5 +13,12 @@
         "transform-runtime"
       ]
     }
+    },
+  "proxy": {
+      "/api": {
+        "target": "https://devd.alliancetime.com/rest/",
+        "changeOrigin": true,
+        "pathRewrite": { "^/api" : "" }
+      }
   }
 }

@@ -10,6 +10,8 @@ import Products from "./routes/Products.js";
 
 import Users from "./routes/Users.js";
 
+import Login from "./routes/Login.js";
+
 function RouterConfig({ history }) {
   return (
     <Router history={history}>
@@ -21,6 +23,7 @@ function RouterConfig({ history }) {
       <Route path="/products/(:filter)" component={Products} />
       <Route path="/users" component={Users} />
       <Route path="/" component={IndexPage} />
+      <Route path="/login" component={Login} />
     </Router>
   );
 }

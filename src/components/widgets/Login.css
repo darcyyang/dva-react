@@ -1,3 +1,18 @@
 
 .normal {
 }
+.globalError{
+    color: #f04134;
+}
+:global  .login-form {
+    max-width: 300px;
+    margin-left: 38%;
+    margin-top: 2%;
+  }
+:global  .login-form-forgot {
+    float: right;
+  }
+:global .login-form-button {
+    width: 100%;
+}
+
